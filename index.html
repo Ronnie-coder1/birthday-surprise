@@ -534,59 +534,11 @@ body.open .date-wrap {
   flex-shrink: 0;
 }
 
-/* Standalone Milestone Number 17 (Separated cleanly above photo) */
-.milestone-17 {
-  margin-top: 14px;
-  display: inline-flex;
-  align-items: center;
-  gap: 14px;
-  opacity: 0;
-  transform: translateY(14px);
-}
-
-body.open .milestone-17 {
-  animation: riseIn 0.85s 0.16s var(--ease-out-expo) forwards;
-}
-
-.milestone-17::before,
-.milestone-17::after {
-  content: "";
-  width: 28px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(223, 190, 120, 0.55));
-}
-
-.milestone-17::after {
-  background: linear-gradient(90deg, rgba(223, 190, 120, 0.55), transparent);
-}
-
-.milestone-num {
-  font-family: "Playfair Display", Georgia, serif;
-  font-weight: 700;
-  font-size: clamp(2.6rem, 11vw, 3.6rem);
-  line-height: 1;
-  letter-spacing: -0.02em;
-  font-variant-numeric: tabular-nums;
-  background: linear-gradient(180deg, #ffffff 12%, var(--gold-300) 68%, var(--gold-600) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.55));
-  transition: filter 0.45s ease, transform 0.45s var(--ease-out-expo);
-}
-
-main.celebrating .milestone-num {
-  transform: scale(1.06);
-  filter: drop-shadow(0 6px 24px rgba(242, 213, 147, 0.4));
-}
-
 /* HERO SECTION */
 .hero {
-  --px: 0px;
-  --py: 0px;
   position: relative;
-  width: min(76vw, 312px);
-  margin: 18px auto 0;
+  width: min(78vw, 320px);
+  margin: 22px auto 0;
   isolation: isolate;
 }
 
@@ -1253,10 +1205,6 @@ body.open footer {
           <span class="date-dot" aria-hidden="true"></span>
           <span>17 · 11 · 2026</span>
         </div>
-      </div>
-
-      <div class="milestone-17" aria-label="Milestone number 17">
-        <span class="milestone-num">17</span>
       </div>
 
       <section class="hero" id="hero" aria-label="Portrait">
