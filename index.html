@@ -1411,17 +1411,11 @@ body.open footer {
     }
   });
 
-  photoEl.addEventListener("click", e => {
+  photoEl.addEventListener("click", () => {
     if (!document.body.classList.contains("open")) return;
     photoEl.classList.remove("sweep");
     void photoEl.offsetWidth;
     photoEl.classList.add("sweep");
-
-    const rect = photoEl.getBoundingClientRect();
-    const x = e.clientX || rect.left + rect.width * 0.5;
-    const y = e.clientY || rect.top + rect.height * 0.45;
-    pulseRing(x, y, 125, "#f2d593");
-    burst(x, y, 28, 0.72, true);
   });
 
   /* HIGH-FPS DELTA-TIME CONFETTI + SHOCKWAVE RING ENGINE (Zero Idle Loops) */
@@ -1439,9 +1433,10 @@ body.open footer {
     "#1ec96f",
     "#36e588",
     "#f2d593",
+    "#ffd166",
+    "#ef476f",
+    "#5ce1e6",
     "#fcf3de",
-    "#dfbe78",
-    "#115934",
     "#ffffff"
   ];
 
@@ -1647,7 +1642,6 @@ body.open footer {
 
   /* GIFT OPENING SEQUENCE */
   const gate = $("gate");
-  const giftBox = $("giftBox");
   const pageShell = $("pageShell");
   let opened = false;
 
@@ -1658,10 +1652,6 @@ body.open footer {
     gate.setAttribute("aria-expanded", "true");
     gate.classList.add("is-opening");
 
-    const boxRect = giftBox.getBoundingClientRect();
-    const bx = boxRect.left + boxRect.width * 0.5;
-    const by = boxRect.top + boxRect.height * 0.35;
-
     if (navigator.vibrate) {
       navigator.vibrate(55);
     }
@@ -1669,19 +1659,11 @@ body.open footer {
     const revealDelay = reducedMotion ? 10 : 280;
 
     setTimeout(() => {
-      pulseRing(bx || width * 0.5, by || height * 0.45, 220, "#f2d593");
-      burst(bx || width * 0.5, by || height * 0.45, 190, 1.2);
       pageShell.removeAttribute("aria-hidden");
       document.title = "Happy Birthday — 17 · 11 · 2026";
       document.body.classList.add("open");
       startTyping();
     }, revealDelay);
-
-    if (!reducedMotion) {
-      setTimeout(() => burst(width * 0.2, height * 0.48, 85, 1), 780);
-      setTimeout(() => burst(width * 0.8, height * 0.48, 85, 1), 1020);
-      setTimeout(() => burst(width * 0.5, height * 0.3, 105, 1.05, true), 1380);
-    }
 
     setTimeout(() => {
       gate.classList.add("is-gone");
@@ -1695,13 +1677,6 @@ body.open footer {
       openGift();
     }
   });
-
-  /* BACKGROUND TAP SPARKLES */
-  window.addEventListener("pointerdown", e => {
-    if (!document.body.classList.contains("open")) return;
-    if (e.target.closest(".btn, .photo")) return;
-    burst(e.clientX, e.clientY, 22, 0.65, true);
-  }, { passive: true });
 })();
 </script>
 
