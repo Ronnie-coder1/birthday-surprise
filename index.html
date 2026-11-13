@@ -3,12 +3,27 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Happy Birthday — 17 · 11 · 2026</title>
+<title>You've Got a Surprise 🎁</title>
 <meta name="theme-color" content="#030705">
-<meta name="description" content="A special birthday surprise — 17 · 11 · 2026.">
-<meta property="og:title" content="It's my birthday! 🎉">
-<meta property="og:description" content="Tap to open your birthday surprise.">
-<meta property="og:image" content="photo.jpeg">
+<meta name="description" content="Someone sent you a private reveal. Tap to open what's inside.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%2305160d'/><path d='M32 10l5.5 16.5L54 32l-16.5 5.5L32 54l-5.5-16.5L10 32l16.5-5.5z' fill='%23f2d593'/></svg>">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://the-big-reveal-ronald.vercel.app/">
+<meta property="og:site_name" content="The Big Reveal">
+<meta property="og:title" content="You've got a surprise 🎁">
+<meta property="og:description" content="Tap to unwrap and see what's inside.">
+<meta property="og:image" content="https://the-big-reveal-ronald.vercel.app/preview.jpg">
+<meta property="og:image:secure_url" content="https://the-big-reveal-ronald.vercel.app/preview.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Luxury emerald green gift box tied with a champagne gold ribbon">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="You've got a surprise 🎁">
+<meta name="twitter:description" content="Tap to unwrap and see what's inside.">
+<meta name="twitter:image" content="https://the-big-reveal-ronald.vercel.app/preview.jpg">
 
 <link rel="preload" as="image" href="photo.jpeg" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -519,13 +534,59 @@ body.open .date-wrap {
   flex-shrink: 0;
 }
 
+/* Standalone Milestone Number 17 (Separated cleanly above photo) */
+.milestone-17 {
+  margin-top: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+body.open .milestone-17 {
+  animation: riseIn 0.85s 0.16s var(--ease-out-expo) forwards;
+}
+
+.milestone-17::before,
+.milestone-17::after {
+  content: "";
+  width: 28px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(223, 190, 120, 0.55));
+}
+
+.milestone-17::after {
+  background: linear-gradient(90deg, rgba(223, 190, 120, 0.55), transparent);
+}
+
+.milestone-num {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 700;
+  font-size: clamp(2.6rem, 11vw, 3.6rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  background: linear-gradient(180deg, #ffffff 12%, var(--gold-300) 68%, var(--gold-600) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.55));
+  transition: filter 0.45s ease, transform 0.45s var(--ease-out-expo);
+}
+
+main.celebrating .milestone-num {
+  transform: scale(1.06);
+  filter: drop-shadow(0 6px 24px rgba(242, 213, 147, 0.4));
+}
+
 /* HERO SECTION */
 .hero {
   --px: 0px;
   --py: 0px;
   position: relative;
   width: min(76vw, 312px);
-  margin: clamp(50px, 12vw, 68px) auto 0;
+  margin: 18px auto 0;
   isolation: isolate;
 }
 
@@ -534,7 +595,7 @@ body.open .date-wrap {
   inset: -14%;
   z-index: -2;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(30, 201, 111, 0.24) 0%, rgba(223, 190, 120, 0.14) 38%, transparent 70%);
+  background: radial-gradient(circle, rgba(30, 201, 111, 0.24) 0%, rgba(223, 190, 120, 0.1) 40%, transparent 70%);
   opacity: 0;
   transform: scale(0.86);
   transition: transform 0.65s var(--ease-out-expo), opacity 0.65s ease;
@@ -550,66 +611,19 @@ main.celebrating .hero-halo {
   opacity: 1;
 }
 
-/* Sculpted Hero Number 17 Centerpiece */
-.big17 {
-  position: absolute;
-  left: 50%;
-  top: clamp(-66px, -14vw, -46px);
-  transform: translateX(calc(-50% + var(--px) * -0.45)) translateY(calc(var(--py) * -0.45));
-  z-index: 1;
-  user-select: none;
-  pointer-events: none;
-  transition: transform 0.26s ease-out;
-}
-
-.big17-glyph {
-  position: relative;
-  display: block;
-  font-family: "Playfair Display", Georgia, serif;
-  font-weight: 700;
-  font-size: clamp(6.8rem, 28vw, 9.8rem);
-  line-height: 0.85;
-  letter-spacing: -0.04em;
-  font-variant-numeric: tabular-nums;
-  background: linear-gradient(180deg, rgba(252, 243, 222, 0.34) 0%, rgba(223, 190, 120, 0.16) 54%, rgba(17, 89, 52, 0.04) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.72)) drop-shadow(0 0 30px rgba(30, 201, 111, 0.2));
-  opacity: 0;
-  transform: translateY(20px) scale(0.94);
-  transition: transform 0.45s var(--ease-out-expo), filter 0.45s ease;
-}
-
-.big17-glyph::after {
-  content: attr(data-num);
-  position: absolute;
-  inset: 0;
-  color: transparent;
-  -webkit-text-stroke: 1.5px rgba(242, 213, 147, 0.74);
-}
-
-body.open .big17-glyph {
-  animation: numReveal 1.05s 0.18s var(--ease-out-expo) forwards;
-}
-
-main.celebrating .big17-glyph {
-  filter: drop-shadow(0 14px 36px rgba(242, 213, 147, 0.36)) drop-shadow(0 0 42px rgba(54, 229, 136, 0.44));
-}
-
-/* Sleek Single-Bezel Portrait Frame */
+/* Clean, Uncluttered Portrait Frame (No gold attachments) */
 .frame {
   position: relative;
   z-index: 2;
   aspect-ratio: 3 / 4;
   perspective: 1100px;
-  border-radius: 24px;
+  border-radius: 22px;
   opacity: 0;
-  transform: translateY(28px) scale(0.92);
+  transform: translateY(24px) scale(0.94);
 }
 
 body.open .frame {
-  animation: frameReveal 1s 0.28s var(--ease-out-expo) forwards;
+  animation: frameReveal 1s 0.26s var(--ease-out-expo) forwards;
 }
 
 .photo {
@@ -620,39 +634,33 @@ body.open .frame {
   position: relative;
   width: 100%;
   height: 100%;
-  border-radius: 24px;
-  padding: 1.5px;
-  background: linear-gradient(
-    145deg,
-    rgba(242, 213, 147, 0.56) 0%,
-    rgba(223, 190, 120, 0.18) 42%,
-    rgba(30, 201, 111, 0.38) 76%,
-    rgba(242, 213, 147, 0.44) 100%
-  );
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #07120c;
   box-shadow:
-    0 32px 64px -16px rgba(0, 0, 0, 0.9),
-    0 0 46px -18px rgba(30, 201, 111, 0.28);
+    0 30px 60px -16px rgba(0, 0, 0, 0.9),
+    0 0 44px -18px rgba(30, 201, 111, 0.25);
   transform: rotateY(var(--ry)) rotateX(var(--rx));
   transform-style: preserve-3d;
-  transition: transform 0.22s ease-out, box-shadow 0.45s ease;
+  transition: transform 0.22s ease-out, box-shadow 0.45s ease, border-color 0.45s ease;
   touch-action: pan-y;
+  overflow: hidden;
   cursor: pointer;
 }
 
 main.celebrating .photo {
+  border-color: rgba(54, 229, 136, 0.36);
   box-shadow:
-    0 32px 68px -12px rgba(0, 0, 0, 0.92),
-    0 0 58px -8px rgba(242, 213, 147, 0.44);
+    0 32px 66px -12px rgba(0, 0, 0, 0.92),
+    0 0 54px -10px rgba(30, 201, 111, 0.4);
 }
 
 .photo-inner {
   position: relative;
   width: 100%;
   height: 100%;
-  border-radius: 22.5px;
   overflow: hidden;
   background: linear-gradient(135deg, #091d12 0%, #050d08 100%);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
 }
 
 .photo-inner::before {
@@ -1040,7 +1048,7 @@ body.open footer {
 
   .hero {
     width: 316px;
-    margin-top: 72px;
+    margin-top: 20px;
   }
 
   .content-col {
@@ -1130,13 +1138,8 @@ body.open footer {
   to { opacity: 0.78; transform: scale(1); }
 }
 
-@keyframes numReveal {
-  from { opacity: 0; transform: translateY(20px) scale(0.94); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
-}
-
 @keyframes frameReveal {
-  from { opacity: 0; transform: translateY(28px) scale(0.92); }
+  from { opacity: 0; transform: translateY(24px) scale(0.94); }
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
@@ -1172,7 +1175,7 @@ body.open footer {
   }
 
   .hero {
-    margin-top: 50px;
+    margin-top: 14px;
   }
 }
 
@@ -1202,7 +1205,7 @@ body.open footer {
 <canvas id="fx" aria-hidden="true"></canvas>
 
 <!-- GIFT GATE -->
-<div class="gate" id="gate" role="button" tabindex="0" aria-label="Open your birthday surprise" aria-expanded="false">
+<div class="gate" id="gate" role="button" tabindex="0" aria-label="Tap to open your surprise" aria-expanded="false">
   <div class="gate-eyebrow">You've got a surprise</div>
 
   <div class="gift-stage">
@@ -1252,19 +1255,19 @@ body.open footer {
         </div>
       </div>
 
-      <section class="hero" id="hero" aria-label="Birthday milestone 17 and portrait">
+      <div class="milestone-17" aria-label="Milestone number 17">
+        <span class="milestone-num">17</span>
+      </div>
+
+      <section class="hero" id="hero" aria-label="Portrait">
         <div class="hero-halo" aria-hidden="true"></div>
 
-        <div class="big17" aria-hidden="true">
-          <span class="big17-glyph" data-num="17">17</span>
-        </div>
-
         <div class="frame" id="frame">
-          <div class="photo" id="photo" title="Tap for a golden shimmer">
+          <div class="photo" id="photo" title="Tap for a light sweep">
             <div class="photo-inner" id="photoInner">
               <img
                 src="photo.jpeg"
-                alt="Birthday portrait"
+                alt="Portrait"
                 width="3024"
                 height="4032"
                 decoding="async"
@@ -1408,8 +1411,7 @@ body.open footer {
     typingTimer = setTimeout(step, 620);
   }
 
-  /* ON-DEMAND 3D TILT, SPECULAR LIGHTING & PARALLAX */
-  const heroEl = $("hero");
+  /* ON-DEMAND 3D TILT & SPECULAR LIGHTING */
   const photoEl = $("photo");
 
   function setTilt(nx, ny) {
@@ -1418,15 +1420,11 @@ body.open footer {
     const ry = (nx * 9.5).toFixed(2);
     const mx = ((nx + 0.5) * 100).toFixed(1);
     const my = ((ny + 0.5) * 100).toFixed(1);
-    const px = (nx * 14).toFixed(2);
-    const py = (ny * 10).toFixed(2);
 
     photoEl.style.setProperty("--rx", `${rx}deg`);
     photoEl.style.setProperty("--ry", `${ry}deg`);
     photoEl.style.setProperty("--mx", `${mx}%`);
     photoEl.style.setProperty("--my", `${my}%`);
-    heroEl.style.setProperty("--px", `${px}px`);
-    heroEl.style.setProperty("--py", `${py}px`);
   }
 
   function resetTilt() {
@@ -1434,8 +1432,6 @@ body.open footer {
     photoEl.style.setProperty("--ry", "0deg");
     photoEl.style.setProperty("--mx", "50%");
     photoEl.style.setProperty("--my", "30%");
-    heroEl.style.setProperty("--px", "0px");
-    heroEl.style.setProperty("--py", "0px");
   }
 
   window.addEventListener("pointermove", e => {
@@ -1728,6 +1724,7 @@ body.open footer {
       pulseRing(bx || width * 0.5, by || height * 0.45, 220, "#f2d593");
       burst(bx || width * 0.5, by || height * 0.45, 190, 1.2);
       pageShell.removeAttribute("aria-hidden");
+      document.title = "Happy Birthday — 17 · 11 · 2026";
       document.body.classList.add("open");
       startTyping();
     }, revealDelay);
