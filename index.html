@@ -679,7 +679,9 @@ main.celebrating .photo {
 }
 
 h1 {
+  width: 100%;
   margin-top: clamp(22px, 4.2vw, 32px);
+  text-align: center;
   opacity: 0;
   transform: translateY(18px);
 }
@@ -688,15 +690,12 @@ body.open h1 {
   animation: riseIn 0.9s 0.48s var(--ease-out-expo) forwards;
 }
 
-h1 .script {
+h1 .script,
+h1 .plain {
   display: block;
   font-family: "Playfair Display", Georgia, serif;
   font-style: italic;
-  font-weight: 800;
-  font-size: clamp(2.45rem, 11vw, 3.6rem);
-  line-height: 1.03;
-  letter-spacing: -0.015em;
-  padding: 0 4px 4px;
+  padding: 0 8px 4px;
   background: linear-gradient(110deg, #ffffff 8%, var(--gold-300) 48%, #fff8e7 78%, var(--gold-400) 100%);
   background-size: 180% auto;
   -webkit-background-clip: text;
@@ -705,33 +704,24 @@ h1 .script {
   filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.5));
 }
 
-body.open h1 .script {
-  animation: sheenOnce 1.8s 0.68s var(--ease-out-expo) forwards;
+h1 .script {
+  font-weight: 800;
+  font-size: clamp(2.35rem, 10.5vw, 3.45rem);
+  line-height: 1.04;
+  letter-spacing: -0.015em;
 }
 
 h1 .plain {
-  display: inline-flex;
-  align-items: center;
-  gap: 14px;
-  margin-top: 8px;
-  font-size: 0.74rem;
+  margin-top: 2px;
   font-weight: 600;
-  letter-spacing: 0.44em;
-  text-indent: 0.44em;
-  text-transform: uppercase;
-  color: var(--muted);
+  font-size: clamp(1.9rem, 8.6vw, 2.8rem);
+  line-height: 1.06;
+  letter-spacing: -0.01em;
 }
 
-h1 .plain::before,
-h1 .plain::after {
-  content: "";
-  width: 24px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(223, 190, 120, 0.5));
-}
-
-h1 .plain::after {
-  background: linear-gradient(90deg, rgba(223, 190, 120, 0.5), transparent);
+body.open h1 .script,
+body.open h1 .plain {
+  animation: sheenOnce 1.8s 0.68s var(--ease-out-expo) forwards;
 }
 
 .name {
@@ -1011,14 +1001,7 @@ body.open footer {
 
   h1 {
     margin-top: 0;
-  }
-
-  h1 .plain {
-    text-indent: 0;
-  }
-
-  h1 .plain::before {
-    display: none;
+    text-align: center;
   }
 
   .msg-card {
