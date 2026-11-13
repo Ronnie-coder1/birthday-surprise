@@ -942,7 +942,7 @@ footer {
   margin-top: clamp(28px, 4.5vh, 40px);
   width: 100%;
   max-width: 360px;
-  padding-top: 16px;
+  padding-top: 4px;
   font-size: 0.72rem;
   font-weight: 500;
   letter-spacing: 0.22em;
@@ -960,6 +960,60 @@ footer::before {
   right: 0;
   height: 1px;
   background: linear-gradient(90deg, transparent, rgba(223, 190, 120, 0.28), transparent);
+}
+
+.footer-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 12px 18px;
+  border-radius: 10px;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: color 0.25s ease, opacity 0.25s ease, transform 0.25s var(--ease-out-expo);
+}
+
+.footer-link::after {
+  content: "";
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 8px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(223, 190, 120, 0.65), transparent);
+  opacity: 0;
+  transform: scaleX(0.6);
+  transition: opacity 0.25s ease, transform 0.28s var(--ease-out-expo);
+}
+
+@media (hover: hover) {
+  .footer-link:hover {
+    color: var(--gold-200);
+    transform: translateY(-1px);
+  }
+
+  .footer-link:hover::after {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+.footer-link:active {
+  color: var(--gold-200);
+  opacity: 0.85;
+}
+
+.footer-link:focus-visible {
+  outline: 2px solid var(--gold-300);
+  outline-offset: 2px;
+  color: var(--gold-200);
 }
 
 body.open footer {
@@ -1244,7 +1298,9 @@ body.open footer {
       </div>
     </div>
 
-    <footer>Vitalyx Solutions</footer>
+    <footer>
+      <a class="footer-link" href="https://ronald-akonortey-portfolio.vercel.app/" target="_blank" rel="noopener noreferrer">Vitalyx Solutions</a>
+    </footer>
 
   </main>
 </div>
